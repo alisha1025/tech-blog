@@ -1,0 +1,57 @@
+
+{{> header}}
+
+<main>
+  <article class="post">
+    <h1>{{post.title}}</h1>
+    <p class="post-meta">Posted by {{post.User.username}} on {{post.createdAt}}</p>
+    <div class="post-content">
+      {{{post.content}}}  
+    </div>
+
+    <!-- Only display edit and delete buttons if the post belongs to the logged-in user -->
+    {{#if isAuthor}}
+      <div class="post-actions">
+        <a href="/posts/{{post.id}}/edit" class="btn btn-secondary">Edit</a>
+        <form action="/posts/{{post.id}}?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    {{/if}}
+
+    <section class="comments">
+      <h2>Comments</h2>
+      {{#if comments.length}}
+        <ul class="comment-list">
+          {{#each comments}}
+            <li class="comment">
+              <p><strong>{{this.User.username}}</strong> said:</p>
+              <p>{{this.content}}</p>
+              <p class="comment-meta">Posted on {{this.createdAt}}</p>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>No comments yet. Be the first to comment!</p>
+      {{/if}}
+    </section>
+
+    {{!-- Comment form for logged-in users --}}
+    {{#if loggedIn}}
+      <section class="add-comment">
+        <h2>Add a Comment</h2>
+        <form action="/posts/{{post.id}}/comments" method="POST">
+          <div class="form-group">
+            <label for="commentContent">Your Comment:</label>
+            <textarea id="commentContent" name="content" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Comment</button>
+        </form>
+      </section>
+    {{else}}
+      <p>You need to <a href="/login">log in</a> to leave a comment.</p>
+    {{/if}}
+  </article>
+</main>
+
+{{> footer}}

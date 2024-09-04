@@ -1,0 +1,38 @@
+
+{{> header}}
+
+<main>
+  <h1>Welcome to the Tech Blog</h1>
+
+  {{#if posts.length}}
+    <h2>Latest Posts</h2>
+    <section class="posts-list">
+      {{#each posts}}
+        <article class="post">
+          <h2>
+            <a href="/posts/{{id}}">{{title}}</a>
+          </h2>
+          <p>Posted by {{User.username}} on {{createdAt}}</p>
+          <div class="post-content">
+            
+            {{#if (length content)}}
+              {{#unless (truncateContent content 100)}}
+                
+                {{content}}
+              {{else}}
+                
+                {{truncateContent content 100}}
+                <a href="/posts/{{id}}">Read more...</a>
+              {{/unless}}
+            {{/if}}
+          </div>
+        </article>
+      {{/each}}
+    </section>
+  {{else}}
+
+    <p>No blog posts available. Check back later!</p>
+  {{/if}}
+</main>
+
+{{> footer}}
