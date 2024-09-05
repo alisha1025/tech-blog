@@ -1,0 +1,25 @@
+{
+    "development": {
+      "username": "your_dev_username",
+      "password": "your_dev_password",
+      "database": "your_dev_database",
+      "host": "localhost",
+      "dialect": "postgres"
+    },
+    "test": {
+      "username": "your_test_username",
+      "password": "your_test_password",
+      "database": "your_test_database",
+      "host": "localhost",
+      "dialect": "postgres"
+    },
+    "production": {
+      "username": "your_prod_username",
+      "password": "your_prod_password",
+      "database": "your_prod_database",
+      "host": "your_prod_host",  // e.g., database-host.render.com
+      "dialect": "postgres",
+      "use_env_variable": "DATABASE_URL"  // For environment variable-based configuration
+    }
+  }
+  
