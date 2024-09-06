@@ -1,0 +1,34 @@
+{
+    "name": "tech-blog",
+    "version": "1.0.0",
+    "description": "A CMS-style tech blog where developers can publish and comment on blog posts.",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "migrate": "sequelize-cli db:migrate",
+      "seed": "sequelize-cli db:seed:all"
+    },
+    "dependencies": {
+      "bcrypt": "^5.1.0",                 // For hashing passwords
+      "connect-session-sequelize": "^7.2.0", // Session store using Sequelize
+      "express": "^4.18.2",               // Web framework
+      "express-session": "^1.17.2",       // Session management
+      "handlebars": "^4.7.7",              // Templating engine
+      "pg": "^8.7.3",                     // PostgreSQL client
+      "sequelize": "^6.32.1",             // ORM for Node.js
+      "sequelize-cli": "^6.6.0",          // Command line tool for Sequelize
+      "dotenv": "^16.3.1",                // For loading environment variables
+      "nodemon": "^2.0.22"                // Development server with auto-reload
+    },
+    "devDependencies": {
+      "sequelize-cli": "^6.6.0"           // CLI tool for migrations, seeds, etc.
+    },
+    "engines": {
+      "node": ">=14.0.0"
+    },
+    "author": "Your Name",
+    "license": "MIT"
+  }
+  
